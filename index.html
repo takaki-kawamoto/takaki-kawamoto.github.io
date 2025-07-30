@@ -3,24 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>私のホームページ</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Takaki KAWAMOTO - ホームページ</title>
+    <style>
+        /* --- 全体のスタイルとダークテーマ設定 --- */
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --primary-color: #4a90e2;
+            --card-bg-color: #2c2c2c;
+            --border-color: #444;
+            --sidebar-width: 240px;
+            --toc-width: 220px;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1, h2, h3 {
+            color: #ffffff;
+            font-weight: 600;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.3em;
+        }
+
+        /* --- サイト全体のレイアウト構成 --- */
+        .site-container {
+            display: grid;
+            grid-template-columns: var(--sidebar-width) 1fr var(--toc-width);
+            grid-template-rows: auto 1fr;
+            grid-template-areas:
+                "header header header"
+                "sidebar-left main sidebar-right";
+            min-height: 100vh;
+            gap: 0 2em;
+            padding: 0 2em;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* --- ヘッダー --- */
+        .site-header {
+            grid-area: header;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .site-header .site-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
+
+        #copy-button {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            padding: 0.6em 1.2em;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background-color 0.2s;
+        }
+
+        #copy-button:hover {
+            background-color: #5a9ce2;
+        }
+
+        /* 検索バーのプレースホルダー */
+        .search-bar {
+            padding: 0.5em 1em;
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #999;
+        }
+
+        /* --- 左サイドバー（メインナビゲーション） --- */
+        .sidebar-left {
+            grid-area: sidebar-left;
+            padding-top: 2em;
+        }
+
+        .sidebar-left nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-left nav a {
+            display: block;
+            padding: 0.8em 1em;
+            color: var(--text-color);
+            border-radius: 8px;
+            margin-bottom: 0.5em;
+            transition: background-color 0.2s;
+        }
+
+        .sidebar-left nav a:hover {
+            background-color: var(--card-bg-color);
+            text-decoration: none;
+        }
+
+        .sidebar-left nav a.active {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* --- メインコンテンツ --- */
+        main {
+            grid-area: main;
+            padding: 0 1em;
+        }
+
+        main ul {
+            padding-left: 20px;
+        }
+        
+        main li {
+            margin-bottom: 0.5em;
+        }
+        
+        .contact-box {
+            background-color: var(--card-bg-color);
+            padding: 1.5em;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* --- 右サイドバー（ページ内目次） --- */
+        .sidebar-right {
+            grid-area: sidebar-right;
+            padding-top: 2em;
+            font-size: 0.9em;
+        }
+        
+        .sidebar-right h3 {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            color: #999;
+            border-bottom: none;
+            margin-top: 0;
+        }
+
+        .sidebar-right ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar-right li a {
+            display: block;
+            padding: 0.5em 0;
+            color: #aaa;
+            border-left: 2px solid transparent;
+            padding-left: 1em;
+        }
+        
+        .sidebar-right li a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .sidebar-right li a.active-toc {
+             border-left-color: var(--primary-color);
+             color: #fff;
+             font-weight: 600;
+        }
+
+        /* --- レスポンシブ対応（スマホ表示など） --- */
+        @media (max-width: 1024px) {
+            .site-container {
+                grid-template-columns: var(--sidebar-width) 1fr;
+                grid-template-areas:
+                    "header header"
+                    "sidebar-left main";
+            }
+            .sidebar-right {
+                display: none; /* 画面が狭いときは右サイドバーを非表示 */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .site-container {
+                display: block; /* 1カラムレイアウトに変更 */
+                padding: 0 1em;
+            }
+            .sidebar-left {
+                padding-top: 1em;
+                border-bottom: 1px solid var(--border-color);
+                margin-bottom: 1em;
+            }
+            .sidebar-left nav ul {
+                display: flex; /* ナビゲーションを横並びに */
+                overflow-x: auto;
+            }
+             .sidebar-left nav li {
+                flex-shrink: 0;
+            }
+        }
+
+    </style>
 </head>
 <body>
 
-    <header>
-        <h1>ようこそ！</h1>
-    </header>
+    <div class="site-container">
+        
+        <header class="site-header">
+            <div class="site-title">Takaki KAWAMOTO</div>
+            <div class="header-controls">
+                <button id="copy-button">コードをコピー</button>
+                <div class="search-bar">🔍 Search...</div>
+            </div>
+        </header>
 
-    <main>
-        <p>これはHTMLで作成した私のホームページです。</p>
-        <p>自己紹介や研究内容などをここに記述します。</p>
-        <a href="page2.html">次のページへ</a>
-    </main>
+        <nav class="sidebar-left">
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#research">研究</a></li>
+                <li><a href="#publications">担当科目</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
 
-    <footer>
-        <p>&copy; 2025 あなたの名前</p>
-    </footer>
+        <main>
+            <h1 id="home">Home</h1>
+            
+            <p>
+                Takaki Kawamoto is an Assistant Professor in the Faculty of Environmental, Life, Natural Science and Technology, Okayama University. 
+                He conducts research in the fields of operations research, mathematical optimization, and algorithm design.
+            </p>
+            
+            <p>
+                <a href="#">Google Scholar</a> / 
+                <a href="#">ResearchGate</a> / 
+                <a href="#">ORCID</a> / 
+                <a href="#">ResearchMap</a> / 
+                <a href="#">科研費</a>
+            </p>
+
+            <h2 id="research">Research History</h2>
+            <ul>
+                <li>Assistant Professor, Okayama University (Apr. 2025 - Present)</li>
+                <li>Research Associate, Waseda University (Apr. 2022 - Mar. 2025)</li>
+            </ul>
+
+            <h2 id="contact">Contact</h2>
+            <div class="contact-box">
+                Okayama University<br>
+                3-1-1 Tsushima-naka,<br>
+                Kita-ku, Okayama 700-8530<br>
+                Japan<br>
+                <br>
+                📧 kawamoto◎okayama-u.ac.jp (Please replace ◎ with @)
+            </div>
+        </main>
+
+        <aside class="sidebar-right">
+            <h3>Contents</h3>
+            <ul>
+                <li><a href="#home" class="active-toc">Home</a></li>
+                <li><a href="#research">Research History</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </aside>
+
+    </div>
+
+    <script>
+        // 「コードをコピー」ボタンの機能
+        document.getElementById('copy-button').addEventListener('click', function() {
+            // コピーするテキストはHTMLドキュメント全体のソースコードです
+            const codeToCopy = document.documentElement.outerHTML;
+            
+            // テキストを保持するための一時的なtextarea要素を作成します
+            const textArea = document.createElement('textarea');
+            textArea.value = codeToCopy;
+            
+            // textareaを画面外に配置して見えなくします
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            textArea.style.padding = 0;
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            textArea.style.background = 'transparent';
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                // コピーコマンドを実行します
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    // 成功した際のフィードバック
+                    const button = document.getElementById('copy-button');
+                    const originalText = button.textContent;
+                    button.textContent = 'コピーしました！';
+                    
+                    // 2秒後にボタンのテキストを元に戻します
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                    }, 2000);
+                } else {
+                     alert('コードのコピーに失敗しました。');
+                }
+            } catch (err) {
+                console.error('コピーに失敗しました:', err);
+                alert('コードのコピーに失敗しました。');
+            }
+            
+            // 一時的なtextareaを削除します
+            document.body.removeChild(textArea);
+        });
+    </script>
 
 </body>
 </html>
