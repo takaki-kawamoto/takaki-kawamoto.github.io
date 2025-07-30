@@ -4,9 +4,9 @@
     --text-color: #e0e0e0;
     --primary-color: #4a90e2;
     --card-bg-color: #2c2c2c;
-    --hover-bg-color: #252525; /* ホバー用の背景色を少し暗めに変更 */
+    --hover-bg-color: #282828; /* ホバー用の背景色を調整 */
     --border-color: #444;
-    --sidebar-width: 260px; /* 少し幅を広げます */
+    --sidebar-width: 260px;
     --toc-width: 220px;
 }
 
@@ -76,7 +76,7 @@ h1, h2, h3 {
     color: var(--primary-color);
 }
 
-/* --- 左サイドバー（メインナビゲーション） --- */
+/* --- 左サイドバー（新デザイン） --- */
 .sidebar-left {
     grid-area: sidebar-left;
     padding-top: 2.5em;
@@ -86,40 +86,31 @@ h1, h2, h3 {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* 項目間のわずかな隙間 */
 }
 
 .sidebar-left nav a {
-    display: flex; /* アイコンとテキストを横並びにする */
-    align-items: center; /* 上下中央揃え */
-    gap: 12px; /* アイコンとテキストの間隔 */
+    display: block;
     padding: 0.9em 1.5em;
-    color: var(--text-color);
+    color: #a0a0a0; /* 通常時の文字色を少し落ち着かせる */
     border-radius: 8px;
-    margin-bottom: 0.5em;
     font-size: 1.05em;
     font-weight: 500;
-    border-left: 4px solid transparent; /* 非アクティブ時は透明なボーダー */
     transition: background-color 0.2s, color 0.2s;
 }
 
 .sidebar-left nav a:hover {
     background-color: var(--hover-bg-color);
-    color: #ffffff;
+    color: #ffffff; /* ホバー時に白文字に */
     text-decoration: none;
 }
 
 .sidebar-left nav a.active {
-    background-color: var(--hover-bg-color);
-    color: #ffffff;
-    font-weight: 600;
-    border-left-color: var(--primary-color); /* アクティブな項目は左ボーダーを強調 */
-}
-
-.nav-icon {
-    width: 20px;
-    height: 20px;
-    stroke-width: 2;
-    flex-shrink: 0; /* アイコンが縮まないようにする */
+    color: var(--primary-color); /* アクティブな項目はアクセントカラーに */
+    font-weight: 600; /* 少し太くして強調 */
+    background-color: transparent; /* 背景色は変えない */
 }
 
 
