@@ -211,3 +211,24 @@ main li {
         flex-shrink: 0;
     }
 }
+.my-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.1em;        /* 文字サイズを拡大 */
+  margin: 1em 0;           /* 表の上下に余白 */
+}
+
+.my-table th, .my-table td {
+  border: 1px solid #444;
+  padding: 14px 20px;      /* セル内の余白を拡大 */
+  text-align: left;
+}
+
+.my-table th {
+  background-color: #223344;
+  color: white;
+}
+
+.my-table tr:nth-child(even) {
+  background-color: #2d2d2d;
+}
