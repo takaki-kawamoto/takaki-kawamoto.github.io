@@ -3,70 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <title>環境構築 - プログラミング</title>
-  <link rel="stylesheet" href="style.css"> <!-- 必要に応じて外部CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="site-container">
+    <header class="site-header">
+      <a href="index.html" class="site-title-link">
+        <div class="site-title">Takaki KAWAMOTO</div>
+      </a>
+    </header>
 
-  <h1>環境構築</h1>
-  <p>プログラミングの講義を受講するために、はじめに各自のコンピュータにC言語の開発環境を構築する必要があります。</p>
+    <nav class="sidebar-left">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ja.html" class="active">ホーム</a></li>
+        <li><a href="teaching.html">担当科目</a></li>
+      </ul>
+    </nav>
 
-  <p>環境構築には、<strong>コンパイラとエディタ</strong>が必要です。以下の表を参考に、自分のOSに合わせたコンパイラとエディタをインストールしてください。</p>
+    <main>
+      <h1 id="env-title">環境構築</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>OS</th>
-        <th>コンパイラ</th>
-        <th>エディタ</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Windows</td>
-        <td>MinGW</td>
-        <td>Visual Studio Code</td>
-      </tr>
-      <tr>
-        <td>Mac</td>
-        <td>Clang/LLVM</td>
-        <td>Visual Studio Code</td>
-      </tr>
-    </tbody>
-  </table>
+      <p>プログラミングの講義を受講するために、はじめに各自のコンピュータにC言語の開発環境を構築する必要があります。</p>
 
-  <div class="toc">
-    <strong>目次</strong>
-    <ul>
-      <li><a href="#pre">準備知識</a></li>
-      <li><a href="#mingw">MinGW のインストール</a></li>
-      <li><a href="#vscode">Visual Studio Code のインストール</a></li>
-      <li><a href="#first-program">動作確認</a></li>
-    </ul>
-  </div>
+      <p>環境構築には、<strong>コンパイラとエディタ</strong>が必要です。以下の表を参考に、自分のOSに合わせたコンパイラとエディタをインストールしてください。</p>
 
-  <h2 id="pre">準備知識</h2>
-  <h3 id="mingw">MinGW, Command Line Tools for Xcode とは？</h3>
-  <p><strong>MinGW</strong> は、Windows 上で C 言語のコンパイルを行うための無料ツールです。</p>
-  <p>→ <a href="https://ja.wikipedia.org/wiki/MinGW" target="_blank">MinGW (Wikipedia)</a></p>
+      <table class="my-table">
+        <thead>
+          <tr>
+            <th>OS</th>
+            <th>コンパイラ</th>
+            <th>エディタ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Windows</td>
+            <td>MinGW</td>
+            <td>Visual Studio Code</td>
+          </tr>
+          <tr>
+            <td>Mac</td>
+            <td>Clang/LLVM</td>
+            <td>Visual Studio Code</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <p><strong>Xcode</strong> は、macOS に標準で用意されている統合開発環境です。</p>
-  <p>→ <a href="https://ja.wikipedia.org/wiki/Xcode" target="_blank">Xcode (Wikipedia)</a></p>
+      <h2 id="toc">目次</h2>
+      <ol>
+        <li><a href="#pre">準備知識</a></li>
+        <li><a href="#mingw">MinGW のインストール</a></li>
+        <li><a href="#vscode">Visual Studio Code のインストール</a></li>
+        <li><a href="#first-program">動作確認</a></li>
+      </ol>
 
-  <h2 id="pre">MinGWのインストール</h2>
+      <h2 id="pre">準備知識</h2>
+      <h3 id="mingw">MinGW, Command Line Tools for Xcode とは？</h3>
+      <p><strong>MinGW</strong> は、Windows 上で C 言語のコンパイルを行うための無料ツールです。</p>
+      <p>→ <a href="https://ja.wikipedia.org/wiki/MinGW" target="_blank">MinGW (Wikipedia)</a></p>
 
-  <h2 id="vscode">Visual Studio Code のインストール</h2>
-  <p>コードを書くためのエディタには Visual Studio Code を使用します。</p>
-  <p>→ <a href="https://code.visualstudio.com/" target="_blank">公式サイトからインストール</a></p>
+      <p><strong>Xcode</strong> は、macOS に標準で用意されている統合開発環境です。</p>
+      <p>→ <a href="https://ja.wikipedia.org/wiki/Xcode" target="_blank">Xcode (Wikipedia)</a></p>
 
-  <h2 id="first-program">動作確認</h2>
-  <p>エディタとコンパイラが準備できたら、最初の C プログラムを書いてみましょう。</p>
-  <pre><code>#include &lt;stdio.h&gt;
+      <h2 id="vscode">Visual Studio Code のインストール</h2>
+      <p>コードを書くためのエディタには Visual Studio Code を使用します。</p>
+      <p>→ <a href="https://code.visualstudio.com/" target="_blank">公式サイトからインストール</a></p>
+
+      <h2 id="first-program">動作確認</h2>
+      <p>エディタとコンパイラが準備できたら、最初の C プログラムを書いてみましょう。</p>
+
+      <pre><code>#include &lt;stdio.h&gt;
 
 int main() {
     printf("Hello, World!\n");
     return 0;
 }
 </code></pre>
+    </main>
 
+    <aside class="sidebar-right">
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#env-title" class="active-toc">環境構築</a></li>
+        <li><a href="#toc">目次</a></li>
+        <li><a href="#pre">準備知識</a></li>
+        <li><a href="#mingw">MinGWとは</a></li>
+        <li><a href="#vscode">VSCodeインストール</a></li>
+        <li><a href="#first-program">動作確認</a></li>
+      </ul>
+    </aside>
+  </div>
 </body>
 </html>
