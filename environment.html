@@ -53,6 +53,7 @@
       <h2 id="toc">目次</h2>
       <ol>
         <li><a href="#pre">準備知識</a></li>
+        <li><a href="#mingw">MinGW, Command Line Tools for Xcode とは？</a></li>
         <li><a href="#mingw">MinGW のインストール</a></li>
         <li><a href="#vscode">Visual Studio Code のインストール</a></li>
         <li><a href="#first-program">動作確認</a></li>
@@ -68,11 +69,19 @@
 
       <h2 id="vscode">Visual Studio Code のインストール</h2>
       <p>コードを書くためのエディタには Visual Studio Code を使用します。</p>
+      <p>自分のOS (Windows or Mac)に合わせて以下の公式サイトからインストールしてください</p>
       <p>→ <a href="https://code.visualstudio.com/" target="_blank">公式サイトからインストール</a></p>
 
       <h2 id="first-program">動作確認</h2>
       <p>エディタとコンパイラが準備できたら、最初の C プログラムを書いてみましょう。</p>
-
+      <p>以下の手順で、まずは.cファイルを作成します。</p>
+      <li>Visual Studio Codeを起動</li>
+      <li>上部メニューバーからファイル -> フォルダを開くを選択</li>
+      <li>エクスプローラ画面が開くので、左上あたりにある「新しいフォルダ」を選択し、名前は「cpro」とする。その後、「cpro」を選択し、選択フォルダを開くをクリック</li>
+      <li>画面が移り変わって、「このフォルダ内のファイルの作成者を信頼しますか？」といった画面が出てくると思うので、「はい、作成者を信頼します」を選択</li>
+      <li>左側のエクスプローラから，作業フォルダを右クリックし，新しいファイルを選択</li>
+      <li>「test.c」という名前でファイルを作成</li>
+      <p>test.cを作成したら，以下のプログラムを入力してください．</p>
       <pre><code>#include &lt;stdio.h&gt;
 
 int main() {
@@ -81,6 +90,34 @@ int main() {
 }
 </code></pre>
     </main>
+    <p>プログラムの入力が終わったら、上部メニューバーからファイル -> 保存を選択し、保存してください。これをしないとプログラムが動きません。</p>
+    
+    <h3>コンパイル</h2>
+    <p>VS Codeのターミナルを使って、作成したプログラムをコンパイルします。上部メニューバーからターミナル -> 新しいターミナルを選択すると、VS Codeのターミナルが開きます。</p>
+    <p>ターミナルが開いたら、以下のコマンドを入力してください。</p>
+    <pre><code>
+    gcc test.c –o test.exe –ansi –pedantic –Wall –lm
+    </code></pre>
+
+    <h3>プログラムの実行</h2>
+    <p>コンパイルが成功すると、作業フォルダにtest.exeという実行ファイルが作成されます。ターミナルで以下のコマンドを入力して、プログラムを実行してください。</p>
+    <p>ターミナルがWindowsのpowershellの場合は、以下のコマンドを入力してください。 (大概の人は、デフォルトがpowershellになっていると思います)</p>
+    <pre><code>
+    .\test.exe
+    </code></pre>
+
+    <p>ターミナルがWindowsのコマンドプロンプトの場合は、以下のコマンドを入力してください。</p>
+    <pre><code>
+    test.exe
+    </code></pre>
+    <p>Windowsのコマンドプロンプトを選択する方法は以下の画像に示しています。</p>
+
+    <p>Macの場合は、以下のコマンドを入力してください。</p>
+    <pre><code>
+    ./test.exe
+    </code></pre>
+
+    <p>ターミナルにHello, World!と表示されれば、プログラムが正常に実行されています。</p>
 
     <aside class="sidebar-right">
       <h3>Contents</h3>
@@ -88,7 +125,8 @@ int main() {
         <li><a href="#env-title" class="active-toc">環境構築</a></li>
         <li><a href="#toc">目次</a></li>
         <li><a href="#pre">準備知識</a></li>
-        <li><a href="#mingw">MinGWとは</a></li>
+        <li><a href="#mingw">MinGW, Command Line Tools for Xcode とは？</a></li>
+        <li><a href="#mingw">MinGW のインストール</a></li>
         <li><a href="#vscode">VSCodeインストール</a></li>
         <li><a href="#first-program">動作確認</a></li>
       </ul>
