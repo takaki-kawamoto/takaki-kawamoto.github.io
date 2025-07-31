@@ -22,7 +22,7 @@
     </nav>
 
     <main>
-      <h1 id="env-title">環境構築</h1>
+      <h1 id="env-title">環境構築 (2025.08.01 更新)</h1>
 
       <p>プログラミングの講義を受講するために、はじめに各自のコンピュータにC言語の開発環境を構築する必要があります。</p>
 
@@ -50,72 +50,199 @@
         </tbody>
       </table>
 
+      <p>この二つを組み合わせると、見た目もスマート、機能性もばっちりなプログラマの環境になります。</p>
+      <p>ですが、環境構築は少し大変です。今から下をよく読んで、環境を構築してください。</p>
+
       <h2 id="toc">目次</h2>
       <ol>
         <li><a href="#pre">準備知識</a></li>
-        <li><a href="#mingw">MinGW, Command Line Tools for Xcode とは？</a></li>
-        <li><a href="#mingw">MinGW のインストール</a></li>
+        <li><a href="#what">MinGW, Command Line Tools for Xcode とは？</a></li>
+        <li><a href="#windows">コンパイラインストール：Windowsの場合</a></li>
+        <li><a href="#mac">コンパイラインストール：Macの場合</a></li>
         <li><a href="#vscode">Visual Studio Code のインストール</a></li>
         <li><a href="#first-program">動作確認</a></li>
       </ol>
 
       <h2 id="pre">準備知識</h2>
-      <h3 id="mingw">MinGW, Command Line Tools for Xcode とは？</h3>
+      <h3 id="what">MinGW, Command Line Tools for Xcode とは？</h3>
       <p><strong>MinGW</strong> は、Windows 上で C 言語のコンパイルを行うための無料ツールです。</p>
       <p>→ <a href="https://ja.wikipedia.org/wiki/MinGW" target="_blank">MinGW (Wikipedia)</a></p>
-
       <p><strong>Xcode</strong> は、macOS に標準で用意されている統合開発環境です。</p>
       <p>→ <a href="https://ja.wikipedia.org/wiki/Xcode" target="_blank">Xcode (Wikipedia)</a></p>
+      <p>それぞれフリーで使えるアプリケーションです。それぞれのインストール⽅法の概要を以下に⽰します。インストールについては参考となる情報がインターネットに多くありますので、以下の資料で分からない点がありましたら、まずはインターネットで調べてみてください。</p>
+
+
+       <h2 id="windows">コンパイラインストール：Windowsの場合</h2>
+       <h3 id="mingw">MinGWのインストール</h3>
+      <p><strong>MinGW</strong> は、Windows 上で C 言語のコンパイルを行うための無料ツールです。</p>
+      <p>以下にMinGWのインストール手順を書いていきます。</p>
+      <p>1. 以下のサイトからMinGW-w64をダウンロードしましょう、まずは以下のサイトにアクセスします。</p>
+      <p><a href="https://www.mingw-w64.org" target="_blank">https://www.mingw-w64.org</a></p>
+
+
+      <p>2. 次に、左側のサイドバーから、Downloads -> Pre-built Toolchains と進みます。</p>
+      <div class="image-container">
+        <img src="images/mingw_1.jpg" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図1. minGWのセットアップ画面</p>
+      </div>
+      <p>3. 少しスクロールすると、「MinGW-W64-builds」というのがあるので、クリックします。</p>
+      <p>4. 画面が飛んで、「Installation: GitHub」というボタンが出ると思うので、クリックします。</p>
+      <div class="image-container">
+        <img src="images/mingw_2.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図2. minGWのセットアップ画面</p>
+      </div>      
+      <p>5. 遷移した先のページの、Assetsの中を見ます。いろいろとあって判別が大変ですが、よく読んで、「x86_64-15.1.0-release-mcf-seh-ucrt-rt_v12-rev0.7z」という
+        ファイルをクリックし、ダウンロードします。
+      </p>
+      <p>6. 自分のPCの「ダウンロード」フォルダの中にある先ほどダウンロードしたフォルダを右クリックし、「すべて展開」を選択します。そのまま「展開」ボタンを押します。</p>
+    <div class="image-container">
+        <img src="images/mingw_3.jpg" style="width: 600px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図3. minGWのセットアップ画面</p>
+      </div>   
+      <p>7. すると、解凍された「mingw64」フォルダの画面が出てくると思います。</p>
+      <p>8. その「mingw64」フォルダをCドライブ直下に移動させます。</p>
+      <p>cドライブ直下には、エクスプローラから下図の赤で囲ったところをクリックし、「ローカルディスク (C:)」をクリックすれば、表示できます。 (下図参照)</p>
+      <p>そのフォルダに、「mingw64」フォルダを移動させるということです。</p>
+      <div class="image-container">
+        <img src="images/mingw_4.jpg" style="width: 600px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図4. minGWのセットアップ画面</p>
+      </div>   
+      <div class="image-container">
+        <img src="images/mingw_7.jpg" style="width: 600px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図5. minGWのセットアップ画面</p>
+      </div>    
+      <h3 id="">環境変数の設定</h3>
+      <p>今から環境変数とよばれるものを設定します。これは、Visual Studio CodeからC言語を動かすために必要です。</p>
+      <p>1. Windowsの検索バーに、「システム環境変数」と打ち、「システム環境変数の編集」を選択します。</p>
+      <p>2. 出てきた画面右下の、「環境変数 (N)」をクリックします。</p>
+      <div class="image-container">
+        <img src="images/mingw_5.jpg" style="width: 600px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図6. minGWのセットアップ画面</p>
+      </div>        
+      <p>3. 「(ユーザ名)のユーザ環境変数」と、「システム環境変数」の二つがありますが、システム環境変数の中を見て、「Path」を選択し、「編集」ボタンをクリックします。</p>
+      <p>4. すると、以下のような画面が出てくると思います。</p>
+      <p>この画面で、「新規」をクリックし、以下の文字をコピーして貼り付けて追加し、「OK」ボタンを押してください。</p>
+      <pre><code>C:\mingw64\bin</code></pre>
+      <div class="image-container">
+        <img src="images/mingw_6.jpg" style="width: 600px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図7. minGWのセットアップ画面</p>
+      </div>        
+      <p>これで、minGWの設定は完了です。<a href="#vscode">次の作業</a>に移ってください。</p></p>
+
+      <h3 id="">minGWの動作確認</h3>
+      <p>minGWが正常にインストールされているかを確認します。</p>
+      <p>Windowsの検索バーに、「cmd」と打ち、「コマンドプロンプト」を選択します。</p>
+      <p>すると、黒い画面が出てくると思います。</p>
+      <p>そこに、以下のコマンドを入力して実行してください。</p>
+      <pre><code>gcc --version</code></pre>
+      <p>バージョンに関する情報が出力されていれば、正常にダウンロードされています。</p>
+      <p>「'gcc'は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはパッチファイルとして認識されません」、というようなメッセージが表示された場合、正常にインストールできていません。
+        多くの場合、環境変数が正しく設定できていないことが原因ですので、正しくPATHが設定されているか、よく確認してください。
+      </p>
+
+      <h2 id="mac">コンパイラインストール：Macの場合</h2>
+       <h3 id="Clang">Clang</h3>
+      <p><strong>Mac</strong> は、Clang/LLVMコンパイラとよばれるものを利用します。</p>
+      <p>多くの場合、このコンパイラはすでにインストールされています。</p>
+      <p>確認のため、Finderからアプリケーション -> ユーティリティ -> ターミナル の順で、ターミナルをまず開いてください。</p>
+      <p>ターミナル画面で、以下のコマンドを実行します。</p>
+      <pre><code>clang --version</code></pre>
+      <p>バージョン情報が表示されればインストールされています。<a href="#vscode">次の作業</a>に移ってください。</p>
+      <p>インストールされていない場合は、ターミナルで以下のコマンドを実行してください。</p>
+      <pre><code>xcode-select --install</code></pre>
+      <p>コマンドを実行した後に表示される案内に従って操作を進めるとCommand Line Tools for Xcode がインストールされ、clangが使えるようになります。</p>
+      <p>ターミナル画面で、以下のコマンドを実行します。</p>
+      <pre><code>clang --version</code></pre>
+
 
       <h2 id="vscode">Visual Studio Code のインストール</h2>
       <p>コードを書くためのエディタには Visual Studio Code を使用します。</p>
-      <p>自分のOS (Windows or Mac)に合わせて以下の公式サイトからインストールしてください</p>
+      <p>自分のOS (Windows or Mac)に合わせて以下の公式サイトからインストールしてください。</p>
       <p>→ <a href="https://code.visualstudio.com/" target="_blank">公式サイトからインストール</a></p>
+      <p>画面通りに進めていけば問題なくインストールできると思いますが、もしできない場合は、「VSCode インストール」などとweb検索して、インストール手順を紹介しているサイトを参照してください。</p>
+
+      <h2 id="vscode">Visual Studio Code の日本語化</h2>
+      <p>VSCodeは英語で全て書かれています。これは、皆さんには少し使いづらいと思います。</p>
+      <p>VSCodeは、たくさんの言語に対応していて、日本語化する設定方法を書いておきます。必須ではないですが、やっておいた方が望ましいです。</p>
+      <p>1. VSCodeを起動</p>
+      <p>2. 左側のアイコンメニューから、Extensionsを選択</p>
+      <p>3. 検索ボックスにて、「japanese」と打ち込む</p>
+      <p>4. 「Japanese Language Pack for Visual Studio Code」を選択し、「Install」ボタンをクリック</p>
+      <p>5. 一度VSCodeを閉じ、再度起動させたら反映されている</p>
+      <div class="image-container">
+        <img src="images/VS_1.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図8. VS Codeの日本語化</p>
+      </div>  
 
       <h2 id="first-program">動作確認</h2>
       <p>エディタとコンパイラが準備できたら、最初の C プログラムを書いてみましょう。</p>
-      <p>以下の手順で、まずは.cファイルを作成します。</p>
-      <li>Visual Studio Codeを起動</li>
-      <li>上部メニューバーからファイル -> フォルダを開くを選択</li>
-      <li>エクスプローラ画面が開くので、左上あたりにある「新しいフォルダ」を選択し、名前は「cpro」とする。その後、「cpro」を選択し、選択フォルダを開くをクリック</li>
-      <li>画面が移り変わって、「このフォルダ内のファイルの作成者を信頼しますか？」といった画面が出てくると思うので、「はい、作成者を信頼します」を選択</li>
-      <li>左側のエクスプローラから，作業フォルダを右クリックし，新しいファイルを選択</li>
-      <li>「test.c」という名前でファイルを作成</li>
-      <p>test.cを作成したら，以下のプログラムを入力してください．</p>
-      <pre><code>#include &lt;stdio.h&gt;
+      <p>とはいっても初めてなので、いろいろ設定する必要があります。下を読みながら、進めていきましょう。</p>
+      <h3>作業フォルダの作成</h3>
+      <p>皆さんは、大学の授業のレポート課題のwordやpowerpointをどのように管理していますか？</p>
+      <p>全部ダウンロードファイルに入れたり、デスクトップに置きっぱなしにしてる人も中に入ると思います。</p>
+      <p>プログラムで作成されるコードファイルはとても大量で、かつ頻繁に書き換えたり消去が行われます。なので、雑に管理すると、間違えてファイルを消してしまったり、
+        見つからなくなってしまったりして、大変なことになります。
+      </p>
+      <p>なので、今からまずはプログラミング用の作業フォルダを作成しましょう。</p>
 
-int main() {
+      <h3>Windowsの場合</h3>
+      <p>「ドキュメント」フォルダに作業用フォルダは作成しましょう。ドキュメントには、エクスプローラを開いて、左側のメニューにあります。</p>
+      <p>「ドキュメント」フォルダ上で、左上の「新規作成」ボタンをクリックし、「フォルダ」を選択。フォルダ名は、「cpro」としましょう。</p>
+      <div class="image-container">
+        <img src="images/dousa_1.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図9. 作業フォルダ作成1</p>
+      </div>  
+      <div class="image-container">
+        <img src="images/dousa_2.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図10. 作業フォルダ作成2</p>
+      </div>  
+
+      <p>プログラミングの講義で作成するコードのファイルは、すべてここに保存するように心がけましょう。</p>
+
+      <h3>Macの場合</h3>
+      <p>「書類 (Documents)」フォルダに作業用フォルダは作成しましょう。Finderから書類(Documents)を開きます。</p>
+      <p>「書類 (Documents)」フォルダ上で、メニューバーにあるファイルメニューを開き、新規フォルダを選択。フォルダ名は、「cpro」としましょう。</p>
+      <p>プログラミングの講義で作成するコードのファイルは、すべてここに保存するように心がけましょう。</p>
+
+
+      <h3>動作確認</h3>
+      <p>以下の手順で、まずは.cファイルを作成します。</p>
+      <ol>
+        <li>Visual Studio Codeを起動</li>
+        <li>上部メニューバーからファイル -> フォルダを開くを選択</li>
+        <li>エクスプローラ画面が開くので、Windowsならドキュメントフォルダ内、Macなら書類フォルダ内に作成した「cpro」フォルダをクリックし、フォルダーの選択をクリック</li>
+        <li>画面が移り変わって、「このフォルダ内のファイルの作成者を信頼しますか？」といった画面が出てきたら、「はい、作成者を信頼します」を選択 (出てこなかったらそのまま次へ)</li>
+        <li>左側のエクスプローラから，作業フォルダを右クリックし，新しいファイルを選択</li>
+        <li>「test.c」という名前でファイルを作成</li>
+      </ol>
+      
+      <p>test.cのファイルを作成したら，以下のプログラムを入力</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int main(void){
     printf("Hello, World!\n");
     return 0;
 }
 </code></pre>
+
     
     <p>プログラムの入力が終わったら、上部メニューバーからファイル -> 保存を選択し、保存してください。これをしないとプログラムが動きません。</p>
     
     <h3>コンパイル</h3>
     <p>VS Codeのターミナルを使って、作成したプログラムをコンパイルします。上部メニューバーからターミナル -> 新しいターミナルを選択すると、VS Codeのターミナルが開きます。</p>
     <p>ターミナルが開いたら、以下のコマンドを入力してください。</p>
-    <pre><code>
-    gcc test.c –o test.exe –ansi –pedantic –Wall –lm
-    </code></pre>
+    <pre><code>gcc test.c -o test.exe -lm -ansi -pedantic -Wall</code></pre>
 
     <h3>プログラムの実行</h3>
     <p>コンパイルが成功すると、作業フォルダにtest.exeという実行ファイルが作成されます。ターミナルで以下のコマンドを入力して、プログラムを実行してください。</p>
     <p>ターミナルがWindowsのpowershellの場合は、以下のコマンドを入力してください。 (大概の人は、デフォルトがpowershellになっていると思います)</p>
-    <pre><code>
-    .\test.exe
-    </code></pre>
+    <pre><code>.\test.exe</code></pre>
 
     <p>ターミナルがWindowsのコマンドプロンプトの場合は、以下のコマンドを入力してください。</p>
-    <pre><code>
-    test.exe
-    </code></pre>
+    <pre><code>test.exe</code></pre>
     <p>Windowsのコマンドプロンプトを選択する方法は以下の画像に示しています。</p>
 
     <p>Macの場合は、以下のコマンドを入力してください。</p>
-    <pre><code>
-    ./test.exe
-    </code></pre>
+    <pre><code>./test.exe</code></pre>
 
     <p>ターミナルにHello, World!と表示されれば、プログラムが正常に実行されています。</p>
 
@@ -125,15 +252,17 @@ int main() {
     <aside class="sidebar-right">
       <h3>Contents</h3>
       <ul>
-        <li><a href="#env-title" class="active-toc">環境構築</a></li>
+        <li><a href="#env-title">環境構築</a></li>
         <li><a href="#toc">目次</a></li>
         <li><a href="#pre">準備知識</a></li>
-        <li><a href="#mingw">MinGW, Command Line Tools for Xcode とは？</a></li>
-        <li><a href="#mingw">MinGW のインストール</a></li>
-        <li><a href="#vscode">VSCodeインストール</a></li>
+        <li><a href="#what">MinGW, Command Line Tools for Xcode とは？</a></li>
+        <li><a href="#windows">コンパイラインストール：Windowsの場合</a></li>
+        <li><a href="#mac">コンパイラインストール：Macの場合</a></li>
+        <li><a href="#vscode">Visual Studio Code のインストール</a></li>
         <li><a href="#first-program">動作確認</a></li>
       </ul>
     </aside>
+
   </div>
 </body>
 </html>
