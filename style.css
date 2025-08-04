@@ -364,3 +364,27 @@ pre code {
 .syllabus-link a:hover {
   text-decoration: underline;
 }
+
+/* セクション強調 */
+.highlight-section {
+    background-color: #fff8e1;
+    padding: 0.5em;
+    border-left: 5px solid #f4b400;
+    font-size: 1.4em;
+    margin-top: 2em;
+}
+
+/* 大きめリンクボタン風 */
+.env-link {
+    background-color: #f4b400;
+    color: black;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 8px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.env-link:hover {
+    background-color: #ffcc00;
+}
