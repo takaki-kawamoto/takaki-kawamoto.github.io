@@ -1,63 +1,66 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Takaki KAWAMOTO - ホームページ</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Takaki KAWAMOTO</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="site-container">
-        <header class="site-header">
-            <a href="index.html" class="site-title-link">
-                <div class="site-title">Takaki KAWAMOTO</div>
-            </a>
-        </header>
-        
-        <!-- ▼▼▼ アイコンを削除し、シンプルな構造に戻しました ▼▼▼ -->
-        <nav class="sidebar-left">
-            <ul>
-                <!-- 英語のHomeページへのリンク（index.htmlを想定） -->
-                <li><a href="index.html">Home</a></li>
-                <!-- この日本語ページをアクティブに設定 -->
-                <li><a href="ja.html" class="active">ホーム</a></li>
-                <li><a href="teaching.html">担当科目</a></li>
-            </ul>
-        </nav>
-        <!-- ▲▲▲ ここまで ▲▲▲ -->
+  <div class="site-container">
+    <header class="site-header">
+      <a href="index.html" class="site-title-link">
+        <div class="site-title">Takaki KAWAMOTO</div>
+      </a>
 
-        <main>
-            <h1 id="home">Home</h1>
-            <p>
-                Takaki Kawamoto is an Assistant Professor in the Faculty of Environmental, Life, Natural Science and Technology, Okayama University. 
-                He conducts research in the fields of operations research, mathematical optimization, and algorithm design.
-            </p>
-            <p>
-                <a href="https://researchmap.jp/takaki_kawamoto">ResearchMap</a>
-            </p>
-            <h2 id="research">Research History</h2>
-            <ul>
-                <li>Assistant Professor, Okayama University (Apr. 2025 - Present)</li>
-                <li>Research Associate, Waseda University (Apr. 2022 - Mar. 2025)</li>
-            </ul>
-            <h2 id="contact">Contact</h2>
-            <div class="contact-box">
-                Okayama University<br>
-                3-1-1 Tsushima-naka,<br>
-                Kita-ku, Okayama 700-8530<br>
-                Japan<br>
-                <br>
-                📧 kawamoto◎okayama-u.ac.jp (Please replace ◎ with @)
-            </div>
-        </main>
-        <aside class="sidebar-right">
-            <h3>Contents</h3>
-            <ul>
-                <li><a href="#home" class="active-toc">Home</a></li>
-                <li><a href="#research">Research History</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </aside>
-    </div>
+    </header>
+
+    <nav class="sidebar-left" aria-label="Site navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ja.html" class="active">ホーム</a></li>
+        <li><a href="teaching.html">担当科目</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1 id="home">Home</h1>
+      <p>
+        Takaki Kawamoto is an Assistant Professor in the Faculty of Environmental, Life, Natural Science and Technology, Okayama University.
+        He conducts research in the fields of operations research, mathematical optimization, and algorithm design.
+      </p>
+
+      <p class="link-row">
+        <a class="pill-link" href="https://researchmap.jp/takaki_kawamoto" target="_blank" rel="noopener noreferrer">
+          ResearchMap
+        </a>
+      </p>
+
+      <h2 id="research">Research History</h2>
+      <ul>
+        <li>Assistant Professor, Okayama University (Apr. 2025 - Present)</li>
+        <li>Research Associate, Waseda University (Apr. 2022 - Mar. 2025)</li>
+      </ul>
+
+      <h2 id="contact">Contact</h2>
+      <div class="contact-box">
+        Okayama University<br />
+        3-1-1 Tsushima-naka,<br />
+        Kita-ku, Okayama 700-8530<br />
+        Japan<br /><br />
+        Mail: t_kawamoto◎okayama-u.ac.jp (Please replace ◎ with @)
+      </div>
+    </main>
+
+    <aside class="sidebar-right" aria-label="Table of contents">
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#research">Research History</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </aside>
+  </div>
+  <script src="site.js"></script>
 </body>
 </html>
