@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>環境構築 - プログラミング</title>
+  <link rel="icon" href="images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .image-container img {
+      cursor: zoom-in;
+    }
+
+    .image-lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 30px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image-lightbox.is-open {
+      display: flex;
+    }
+
+    .image-lightbox img {
+      max-width: 95vw;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      cursor: zoom-out;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .image-lightbox-close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 42px;
+      line-height: 1;
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="site-container">
+    <header class="site-header">
+      <a href="index.html" class="site-title-link">
+        <div class="site-title">Takaki KAWAMOTO</div>
+      </a>
+    </header>
+
+    <nav class="sidebar-left">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ja.html" class="active">ホーム</a></li>
+        <li><a href="teaching.html">担当科目</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1 id="env-title">環境構築 (2026.09.01 更新)</h1>
+
+      <p class="note-box">
+      <strong class="course-code">このページは、Windows用の環境構築手順です。</strong><br>
+      Macの方は<a href="environment_mac.html">こちらのページ</a>に遷移してください。
+      </p>
+
+      <p class="note-box">
+      以下の手順を参考に、各自で環境を構築ください。<strong class="course-code">第1回 (10/7(水))の講義では、すでに環境が構築されていることを前提として講義を進めます。</strong>
+      </p>
+
+      <p>プログラミングの講義を受講するために、はじめに各自のコンピュータにC言語の開発環境を構築する必要があります。</p>
+
+      <p>環境構築には、<strong>コンパイラとエディタ</strong>が必要です。以下の表を参考に、自分のOSに合わせたコンパイラとエディタをインストールしてください。</p>
+
+      <table class="my-table">
+        <thead>
+          <tr>
+            <th>OS</th>
+            <th>コンパイラ</th>
+            <th>エディタ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Windows</td>
+            <td>MinGW</td>
+            <td>Visual Studio Code</td>
+          </tr>
+          <tr>
+            <td>Mac</td>
+            <td>Clang/LLVM</td>
+            <td>Visual Studio Code</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>この二つを組み合わせると、機能性ばっちり、見た目もスマートなプログラマの環境になります。</p>
+      <p>ですが、環境構築は少し大変です。今から下をよく読んで、環境を構築してください。</p>
+
+      <h2 id="toc">目次</h2>
+      <ol>
+        <li><a href="#pre">準備知識</a></li>
+        <li><a href="#what">MinGW, Command Line Tools for Xcode とは？</a></li>
+        <li><a href="#windows">コンパイラインストール</a></li>
+        <li><a href="#vscode">Visual Studio Code のインストール</a></li>
+        <li><a href="#first-program">動作確認</a></li>
+      </ol>
+
+      <h2 id="pre">準備知識</h2>
+      <h3 id="what">MinGW, Command Line Tools for Xcode とは？</h3>
+      <p><strong>MinGW</strong> は、Windows 上で C 言語のコンパイルを行うための無料ツールです。</p>
+      <p>→ <a href="https://ja.wikipedia.org/wiki/MinGW" target="_blank">MinGW (Wikipedia)</a></p>
+      <p><strong>Xcode</strong> は、macOS に標準で用意されている統合開発環境です。</p>
+      <p>→ <a href="https://ja.wikipedia.org/wiki/Xcode" target="_blank">Xcode (Wikipedia)</a></p>
+      <p>それぞれフリーで使えるアプリケーションです。それぞれのインストール⽅法の概要を以下に⽰します。インストールについては参考となる情報がインターネットに多くありますので、以下の資料で分からない点がありましたら、まずはインターネットで調べてみてください。</p>
+
+
+       <h2 id="windows">コンパイラインストール</h2>
+       <h3 id="mingw">MinGWのインストール</h3>
+      <p><strong>MinGW</strong> は、Windows 上で C 言語のコンパイルを行うための無料ツールです。</p>
+      <p>以下にMinGWのインストール手順を書いていきます。</p>
+      <p>1. 以下のサイトからMinGW-w64をダウンロードしましょう、まずは以下のサイトにアクセスします。</p>
+      <p><a href="https://www.mingw-w64.org" target="_blank">https://www.mingw-w64.org</a></p>
+
+
+      <p>2. 次に、左側のサイドバーから、Downloads -> Pre-built Toolchains と進みます。</p>
+      <div class="image-container">
+        <img src="images/mingw_1.jpg" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図1. minGWのセットアップ画面</p>
+      </div>
+      <p>3. 少しスクロールすると、「MinGW-W64-builds」というのがあるので、クリックします。</p>
+      <p>4. 画面が飛んで、「Installation: GitHub」というボタンが出ると思うので、クリックします。</p>
+      <div class="image-container">
+        <img src="images/mingw_2.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図2. minGWのセットアップ画面</p>
+      </div>      
+      <p>5. 遷移した先のページの、Assetsの中を見ます。いろいろとあって判別が大変ですが、よく読んで、「x86_64-16.2.0-release-mcf-seh-ucrt-rt_v14-rev1.7z」という
+        ファイルをクリックし、ダウンロードします。
+      </p>
+      <div class="image-container">
+        <img src="images/git_dl.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図3. MinGW-w64のダウンロードファイル</p>
+      </div>
+      <p>6. 自分のPCの「ダウンロード」フォルダの中にある先ほどダウンロードしたファイルを右クリックし、「すべて展開」を選択します。</p>
+      <div class="image-container">
+        <img src="images/deploy1.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図4. 圧縮ファイルの展開</p>
+      </div>
+      <p>7. 「展開先の選択とファイルの展開」という画面が表示されたら、展開先に「C:\」と入力し、「展開」ボタンを押します。</p>
+      <div class="image-container">
+        <img src="images/deploy2.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図5. 展開先の指定</p>
+      </div>
+      <p>8. 展開が完了すると、Cドライブ直下に「mingw64」フォルダが作成されます。下図のように、Cドライブ直下に「mingw64」フォルダがあることを確認してください。</p>
+      <div class="image-container">
+        <img src="images/mingw_save.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図6. Cドライブ直下のmingw64フォルダ</p>
+      </div>
+      <h3 id="">環境変数の設定</h3>
+      <p>今から環境変数とよばれるものを設定します。これは、Visual Studio CodeからC言語を動かすために必要です。</p>
+      <p>1. Windowsの検索バーに、「システム環境変数」と打ち、「システム環境変数の編集」を選択します。</p>
+      <div class="image-container">
+        <img src="images/sys_query.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図7. システム環境変数の検索</p>
+      </div>
+      <p>2. 出てきた画面右下の、「環境変数 (N)」をクリックします。</p>
+      <div class="image-container">
+        <img src="images/mingw_5.jpg" style="width: 600px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図8. minGWのセットアップ画面</p>
+      </div>        
+      <p>3. 「(ユーザ名)のユーザ環境変数」と、「システム環境変数」の二つがありますが、システム環境変数の中を見て、「Path」を選択し、「編集」ボタンをクリックします。</p>
+      <p>4. すると、以下のような画面が出てくると思います。</p>
+      <p>この画面で、「新規」をクリックし、以下の文字をコピーして貼り付けて追加し、「OK」ボタンを押してください。</p>
+      <pre><code>C:\mingw64\bin</code></pre>
+      <div class="image-container">
+        <img src="images/mingw_6.jpg" style="width: 600px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図9. minGWのセットアップ画面</p>
+      </div>        
+      
+
+      <h3 id="">minGWの動作確認</h3>
+      <p>minGWが正常にインストールされているかを確認します。</p>
+      <p>Windowsの検索バーに、「cmd」と打ち、「コマンドプロンプト」を選択します。</p>
+      <div class="image-container">
+        <img src="images/cmd_query.jpg" style="width: 1000px;" alt="Windowsの検索からコマンドプロンプトを開く画面">
+        <p class="image-caption">図10. コマンドプロンプトの起動方法</p>
+      </div>
+      <p>すると、黒い画面が出てくると思います。</p>
+      <p>そこに、以下のコマンドを入力して実行してください。</p>
+      <pre><code>gcc --version</code></pre>
+      <div class="image-container">
+        <img src="images/cmd_gcc.jpg" style="width: 1000px;" alt="コマンドプロンプトでgccのバージョンを確認する画面">
+        <p class="image-caption">図11. gccのバージョン確認</p>
+      </div>
+      <p>もし、バージョンに関する情報が出力されていれば、正常にダウンロードされています。<a href="#vscode">次の作業</a>に移ってください。</p></p>
+      <p>もし、「'gcc'は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはパッチファイルとして認識されません」、というようなメッセージが表示された場合、正常にインストールできていません。
+        よくある間違いのケースを、以下にまとめました。
+      <ol>
+        <li>「mingw64」フォルダがCドライブ直下に入っているか</li>
+        <li>システム環境変数のPath設定は、正しく入力されているか、打ち間違えはないか。</li>
+        <li>間違えて「(ユーザ名)のユーザ環境変数」の方に、Pathを入力してしまっていないか。</li>
+      </ol>
+      <p>これらを確認し、間違っていれば、前の手順の該当箇所をもう一度よく確認してください。</p>        
+
+
+
+      <h2 id="vscode">Visual Studio Code のインストール</h2>
+      <p>コードを書くためのエディタには Visual Studio Code を使用します。</p>
+      <p>以下の公式サイトからインストールしてください。</p>
+      <p>→ <a href="https://code.visualstudio.com/" target="_blank">公式サイトからインストール</a></p>
+      <p>画面通りに進めていけば問題なくインストールできると思いますが、もしやり方がわからない場合は、「VSCode インストール」などとweb検索して、インストール手順を紹介しているサイトを参照してください。</p>
+
+      <h2 id="vscode">Visual Studio Code の日本語化</h2>
+      <p>VSCodeは英語で全て書かれています。これは、皆さんには少し使いづらいと思います。</p>
+      <p>VSCodeは、たくさんの言語に対応していて、日本語化する設定方法を書いておきます。必須ではないですが、やっておいた方が皆さん的に楽だと思います。</p>
+      <p>1. VSCodeを起動</p>
+      <p>2. 左側のアイコンメニューから、Extensionsを選択</p>
+      <p>3. 検索ボックスにて、「japanese」と打ち込む</p>
+      <p>4. 「Japanese Language Pack for Visual Studio Code」を選択し、「Install」ボタンをクリック</p>
+      <p>5. 一度VSCodeを閉じ、再度起動させたら反映されている</p>
+      <div class="image-container">
+        <img src="images/VS_1.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図12. VS Codeの日本語化</p>
+      </div>  
+      <p>最後に、正しくコードが実行できないといけないので、動作確認をしましょう。</p>
+
+      <h2 id="first-program">動作確認</h2>
+      <p>エディタとコンパイラが準備できたら、最初の C プログラムを書いてみましょう。</p>
+      <p>とはいっても初めてなので、いろいろ設定する必要があります。下を読みながら、進めていきましょう。</p>
+      <h3>作業フォルダの作成</h3>
+      <p>皆さんは、大学の授業のレポート課題のwordやpowerpointをどのように管理していますか？</p>
+      <p>全部ダウンロードファイルに入れたり、デスクトップに置きっぱなしにしてるズボラな人も中にはいると思います。。</p>
+      <p>プログラムで作成されるコードファイルはとても大量で、かつ頻繁に書き換えたり消去が行われます。なので、プログラミングの授業で作成したファイルを雑に管理すると、間違えてファイルを消してしまったり、
+        見つからなくなってしまったりして、あとで大変なことになります。
+      </p>
+      <p>なので、今からまずはプログラミング用の作業フォルダを作成しましょう。</p>
+
+      <p>「ドキュメント」フォルダに作業用フォルダは作成しましょう。ドキュメントには、エクスプローラを開いて、左側のメニューにあります。</p>
+      <p>「ドキュメント」フォルダ上で、左上の「新規作成」ボタンをクリックし、「フォルダ」を選択。フォルダ名は、「cpro」としましょう。</p>
+      <div class="image-container">
+        <img src="images/dousa_1.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図13. 作業フォルダ作成1</p>
+      </div>  
+      <div class="image-container">
+        <img src="images/dousa_2.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
+        <p class="image-caption">図14. 作業フォルダ作成2</p>
+      </div>  
+
+      <p>プログラミングの講義で作成するソースファイル (コードのファイル)は、すべてここに保存するように常に心がけましょう。</p>
+
+
+
+      <h3>動作確認</h3>
+      <p>以下の手順で、まずは.cファイルを作成します。</p>
+      <ol>
+        <li>Visual Studio Codeを起動</li>
+        <li>上部メニューバーからファイル -> フォルダを開くを選択</li>
+        <li>エクスプローラ画面が開くので、ドキュメントフォルダ内に作成した「cpro」フォルダをクリックし、フォルダーの選択をクリック</li>
+        <li>画面が移り変わって、「このフォルダ内のファイルの作成者を信頼しますか？」という画面が出てきたら、「はい、作成者を信頼します」を選択 (出てこなかったらそのまま次へ)</li>
+        <li>左側の「エクスプローラ」から，作業フォルダを右クリックし，新しいファイルを選択</li>
+        <li>「test.c」という名前でファイルを作成</li>
+      </ol>
+      
+      <p>test.cのファイルを作成したら，以下のプログラムを入力</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int main(void){
+    printf("Hello, World!\n");
+    return 0;
+}
+</code></pre>
+
+    
+    <p>プログラムの入力が終わったら、上部メニューバーからファイル -> 保存を選択し、保存してください。これをしないとプログラムが動きません。</p>
+    
+    <h3>コンパイル</h3>
+    <p>VS Codeのターミナルを使って、作成したプログラムをコンパイルします。上部メニューバーからターミナル -> 新しいターミナルを選択すると、VS Codeのターミナルが開きます。</p>
+    <p>ターミナルが開いたら、以下のコマンドを入力してください。</p>
+    <pre><code>gcc test.c -o test.exe -lm -ansi -pedantic -Wall</code></pre>
+
+    <h3>プログラムの実行</h3>
+    <p>コンパイルが成功すると、作業フォルダにtest.exeという実行ファイルが作成されます。ターミナルで以下のコマンドを入力して、プログラムを実行してください。</p>
+    <pre><code>.\test.exe</code></pre>
+
+    <p><strong>もし上記のコマンドでうまく実行できない場合</strong>は、VS Codeで使用しているターミナルを確認してください。</p>
+    <p>ターミナル上部に「pwsh」と表示されている場合はPowerShellです。</p>
+    <div class="image-container">
+      <img src="images/powershell.jpg" style="width: 600px;" alt="VS CodeのPowerShellターミナル">
+      <p class="image-caption">図15. PowerShellの場合</p>
+    </div>
+
+    <p>ターミナル上部に「cmd」と表示されている場合はコマンドプロンプトです。</p>
+    <div class="image-container">
+      <img src="images/cmd.jpg" style="width: 600px;" alt="VS Codeのコマンドプロンプト">
+      <p class="image-caption">図16. コマンドプロンプトの場合</p>
+    </div>
+
+    <p>PowerShellまたはコマンドプロンプトであれば、どちらでも上記のコマンドで実行できます。それ以外のターミナルが選択されている場合や、うまく実行できない場合は、ターミナル右上の「∨」をクリックし、「Command Prompt」を選択してください。その後、もう一度上記のコマンドを実行してください。</p>
+    <div class="image-container">
+      <img src="images/terminal_setting.jpg" style="width: 500px;" alt="VS Codeでターミナルを選択する画面">
+      <p class="image-caption">図17. ターミナルの切り替え方法</p>
+    </div>
+
+    <p>ターミナルにHello, World!と表示されれば、プログラムが正常に実行されています。</p>
+
+    <p>環境構築のセットアップは以上となります。お疲れさまでした。</p>
+
+
+    </main>
+
+    <aside class="sidebar-right">
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#env-title">環境構築</a></li>
+        <li><a href="#toc">目次</a></li>
+        <li><a href="#pre">準備知識</a></li>
+        <li><a href="#what">MinGW, Command Line Tools for Xcode とは？</a></li>
+        <li><a href="#windows">コンパイラインストール</a></li>
+        <li><a href="#vscode">Visual Studio Code のインストール</a></li>
+        <li><a href="#first-program">動作確認</a></li>
+      </ul>
+    </aside>
+
+  </div>
+  <script src="site.js"></script>
+
+  <div class="image-lightbox" id="image-lightbox" aria-hidden="true">
+    <button type="button" class="image-lightbox-close" id="image-lightbox-close" aria-label="拡大画像を閉じる">&times;</button>
+    <img id="image-lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    (function () {
+      const lightbox = document.getElementById('image-lightbox');
+      const lightboxImg = document.getElementById('image-lightbox-img');
+      const closeButton = document.getElementById('image-lightbox-close');
+      const images = document.querySelectorAll('.image-container img');
+
+      function openLightbox(img) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || '';
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImg.src = '';
+      }
+
+      images.forEach(function (img) {
+        img.addEventListener('click', function () {
+          openLightbox(img);
+        });
+      });
+
+      closeButton.addEventListener('click', closeLightbox);
+
+      lightbox.addEventListener('click', function (event) {
+        if (event.target === lightbox || event.target === lightboxImg) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+          closeLightbox();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
