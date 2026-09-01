@@ -190,12 +190,16 @@
         <p class="image-caption">図8. minGWのセットアップ画面</p>
       </div>        
       <p>3. 「(ユーザ名)のユーザ環境変数」と、「システム環境変数」の二つがありますが、システム環境変数の中を見て、「Path」を選択し、「編集」ボタンをクリックします。</p>
+      <div class="image-container">
+        <img src="images/sys_edit.jpg" style="width: 600px;" alt="システム環境変数のPathを選択して編集する画面">
+        <p class="image-caption">図9. システム環境変数のPathの編集</p>
+      </div>
       <p>4. すると、以下のような画面が出てくると思います。</p>
       <p>この画面で、「新規」をクリックし、以下の文字をコピーして貼り付けて追加し、「OK」ボタンを押してください。</p>
       <pre><code>C:\mingw64\bin</code></pre>
       <div class="image-container">
         <img src="images/mingw_6.jpg" style="width: 600px;" alt="開発環境のスクリーンショット">
-        <p class="image-caption">図9. minGWのセットアップ画面</p>
+        <p class="image-caption">図10. minGWのセットアップ画面</p>
       </div>        
       
 
@@ -204,14 +208,14 @@
       <p>Windowsの検索バーに、「cmd」と打ち、「コマンドプロンプト」を選択します。</p>
       <div class="image-container">
         <img src="images/cmd_query.jpg" style="width: 1000px;" alt="Windowsの検索からコマンドプロンプトを開く画面">
-        <p class="image-caption">図10. コマンドプロンプトの起動方法</p>
+        <p class="image-caption">図11. コマンドプロンプトの起動方法</p>
       </div>
       <p>すると、黒い画面が出てくると思います。</p>
       <p>そこに、以下のコマンドを入力して実行してください。</p>
       <pre><code>gcc --version</code></pre>
       <div class="image-container">
         <img src="images/cmd_gcc.jpg" style="width: 1000px;" alt="コマンドプロンプトでgccのバージョンを確認する画面">
-        <p class="image-caption">図11. gccのバージョン確認</p>
+        <p class="image-caption">図12. gccのバージョン確認</p>
       </div>
       <p>もし、バージョンに関する情報が出力されていれば、正常にダウンロードされています。<a href="#vscode">次の作業</a>に移ってください。</p></p>
       <p>もし、「'gcc'は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはパッチファイルとして認識されません」、というようなメッセージが表示された場合、正常にインストールできていません。
@@ -241,7 +245,7 @@
       <p>5. 一度VSCodeを閉じ、再度起動させたら反映されている</p>
       <div class="image-container">
         <img src="images/VS_1.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
-        <p class="image-caption">図12. VS Codeの日本語化</p>
+        <p class="image-caption">図13. VS Codeの日本語化</p>
       </div>  
       <p>最後に、正しくコードが実行できないといけないので、動作確認をしましょう。</p>
 
@@ -260,11 +264,11 @@
       <p>「ドキュメント」フォルダ上で、左上の「新規作成」ボタンをクリックし、「フォルダ」を選択。フォルダ名は、「cpro」としましょう。</p>
       <div class="image-container">
         <img src="images/dousa_1.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
-        <p class="image-caption">図13. 作業フォルダ作成1</p>
+        <p class="image-caption">図14. 作業フォルダ作成1</p>
       </div>  
       <div class="image-container">
         <img src="images/dousa_2.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
-        <p class="image-caption">図14. 作業フォルダ作成2</p>
+        <p class="image-caption">図15. 作業フォルダ作成2</p>
       </div>  
 
       <p>プログラミングの講義で作成するソースファイル (コードのファイル)は、すべてここに保存するように常に心がけましょう。</p>
