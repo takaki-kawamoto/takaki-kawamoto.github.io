@@ -128,11 +128,18 @@
       <p>→ <a href="https://ja.wikipedia.org/wiki/Xcode" target="_blank">Xcode (Wikipedia)</a></p>
       <p>それぞれフリーで使えるアプリケーションです。それぞれのインストール⽅法の概要を以下に⽰します。インストールについては参考となる情報がインターネットに多くありますので、以下の資料で分からない点がありましたら、まずはインターネットで調べてみてください。</p>
 
+      <div class="note-box">
+        <strong>環境構築の全体の流れ</strong>
+        <p>これから、次の3つの手順を順番に進めます。</p>
+        <p>① コンパイラ（MinGW）のインストール<br>
+        ② Visual Studio Codeのインストール<br>
+        ③ 動作確認</p>
+        <p><strong>①～③まですべて完了すれば、環境構築は終了です。</strong></p>
+      </div>
 
        <h2 id="windows">コンパイラインストール</h2>
        <h3 id="mingw">MinGWのインストール</h3>
-      <p><strong>MinGW</strong> は、Windows 上で C 言語のコンパイルを行うための無料ツールです。</p>
-      <p>以下にMinGWのインストール手順を書いていきます。</p>
+      <p><strong>ここから、Windowsで使用するコンパイラ「MinGW」のインストール手順を説明します。</strong></p>
       <p>1. 以下のサイトからMinGW-w64をダウンロードしましょう、まずは以下のサイトにアクセスします。</p>
       <p><a href="https://www.mingw-w64.org" target="_blank">https://www.mingw-w64.org</a></p>
 
@@ -298,26 +305,6 @@ int main(void){
     <p>ターミナルにHello, World!と表示されれば、プログラムが正常に実行されています。</p>
 
     <p>環境構築のセットアップは以上となります。お疲れさまでした。</p>
-
-
-    <p><strong>もし上記のコマンドでうまく実行できない場合</strong>は、VS Codeで使用しているターミナルを確認してください。</p>
-    <p>ターミナル上部に「pwsh」と表示されている場合はPowerShellです。</p>
-    <div class="image-container">
-      <img src="images/powershell.jpg" style="width: 600px;" alt="VS CodeのPowerShellターミナル">
-      <p class="image-caption">図15. PowerShellの場合</p>
-    </div>
-
-    <p>ターミナル上部に「cmd」と表示されている場合はコマンドプロンプトです。</p>
-    <div class="image-container">
-      <img src="images/cmd.jpg" style="width: 600px;" alt="VS Codeのコマンドプロンプト">
-      <p class="image-caption">図16. コマンドプロンプトの場合</p>
-    </div>
-
-    <p>PowerShellまたはコマンドプロンプトであれば、どちらでも上記のコマンドで実行できます。それ以外のターミナルが選択されている場合や、うまく実行できない場合は、ターミナル右上の「∨」をクリックし、「Command Prompt」を選択してください。その後、もう一度上記のコマンドを実行してください。</p>
-    <div class="image-container">
-      <img src="images/terminal_setting.jpg" style="width: 500px;" alt="VS Codeでターミナルを選択する画面">
-      <p class="image-caption">図17. ターミナルの切り替え方法</p>
-    </div>
 
 
     </main>
