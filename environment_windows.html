@@ -79,7 +79,7 @@
       </p>
 
       <p class="note-box">
-      以下の手順を参考に、各自で環境を構築ください。<strong class="course-code">第1回 (10/7(水))の講義では、すでに環境が構築されていることを前提として講義を進めます。</strong>
+      以下の手順を参考に、各自で環境を構築してください。<strong class="course-code">第1回 (10/7(水))の講義では、すでに環境が構築されていることを前提として講義を進めます。</strong>
       </p>
 
       <p>プログラミングの講義を受講するために、はじめに各自のコンピュータにC言語の開発環境を構築する必要があります。</p>
@@ -114,27 +114,31 @@
       <h2 id="toc">目次</h2>
       <ol>
         <li><a href="#pre">準備知識</a></li>
-        <li><a href="#what">MinGW, Command Line Tools for Xcode とは？</a></li>
+        <li><a href="#what">MinGWとは？</a></li>
         <li><a href="#windows">コンパイラインストール</a></li>
         <li><a href="#vscode">Visual Studio Code のインストール</a></li>
+        <li><a href="#vscode-ja">Visual Studio Code の日本語化</a></li>
+        <li><a href="#vscode-assist">AI・Suggestion機能の無効化</a></li>
         <li><a href="#first-program">動作確認</a></li>
       </ol>
 
       <h2 id="pre">準備知識</h2>
-      <h3 id="what">MinGW, Command Line Tools for Xcode とは？</h3>
+      <h3 id="what">MinGWとは？</h3>
       <p><strong>MinGW</strong> は、Windows 上で C 言語のコンパイルを行うための無料ツールです。</p>
       <p>→ <a href="https://ja.wikipedia.org/wiki/MinGW" target="_blank">MinGW (Wikipedia)</a></p>
-      <p><strong>Xcode</strong> は、macOS に標準で用意されている統合開発環境です。</p>
-      <p>→ <a href="https://ja.wikipedia.org/wiki/Xcode" target="_blank">Xcode (Wikipedia)</a></p>
-      <p>それぞれフリーで使えるアプリケーションです。それぞれのインストール⽅法の概要を以下に⽰します。インストールについては参考となる情報がインターネットに多くありますので、以下の資料で分からない点がありましたら、まずはインターネットで調べてみてください。</p>
+      <p>MinGWはフリーで使えるアプリケーションです。インストール⽅法の概要を以下に⽰します。インストールについては参考となる情報がインターネットに多くありますので、以下の資料で分からない点がありましたら、まずはインターネットで調べてみてください。</p>
 
       <div class="note-box">
         <strong>環境構築の全体の流れ</strong>
-        <p>これから、次の3つの手順を順番に進めます。</p>
-        <p>① コンパイラ（MinGW）のインストール<br>
-        ② Visual Studio Codeのインストール<br>
-        ③ 動作確認</p>
-        <p><strong>①～③まですべて完了すれば、環境構築は終了です。</strong></p>
+        <p>これから、次の5つの手順を順番に進めます。</p>
+        <p>
+          ① コンパイラ（MinGW）のインストール<br>
+          ② Visual Studio Codeのインストール<br>
+          ③ Visual Studio Codeの日本語化 (任意)<br>
+          ④ AI・Suggestion機能の無効化<br>
+          ⑤ 動作確認
+        </p>
+        <p><strong>①～⑤まですべて完了すれば、環境構築は終了です。</strong></p>
       </div>
 
        <h2 id="windows">コンパイラインストール</h2>
@@ -177,7 +181,7 @@
         <img src="images/mingw_save.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
         <p class="image-caption">図6. Cドライブ直下のmingw64フォルダ</p>
       </div>
-      <h3 id="">環境変数の設定</h3>
+      <h3>環境変数の設定</h3>
       <p>今から環境変数とよばれるものを設定します。これは、Visual Studio CodeからC言語を動かすために必要です。</p>
       <p>1. Windowsの検索バーに、「システム環境変数」と打ち、「システム環境変数の編集」を選択します。</p>
       <div class="image-container">
@@ -203,7 +207,7 @@
       </div>        
       
 
-      <h3 id="">minGWの動作確認</h3>
+      <h3>minGWの動作確認</h3>
       <p>minGWが正常にインストールされているかを確認します。</p>
       <p>Windowsの検索バーに、「cmd」と打ち、「コマンドプロンプト」を選択します。</p>
       <div class="image-container">
@@ -217,13 +221,12 @@
         <img src="images/cmd_gcc.jpg" style="width: 1000px;" alt="コマンドプロンプトでgccのバージョンを確認する画面">
         <p class="image-caption">図12. gccのバージョン確認</p>
       </div>
-      <p>もし、バージョンに関する情報が出力されていれば、正常にダウンロードされています。<a href="#vscode">次の作業</a>に移ってください。</p></p>
-      <p>もし、「'gcc'は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはパッチファイルとして認識されません」、というようなメッセージが表示された場合、正常にインストールできていません。
+      <p>もし、バージョンに関する情報が出力されていれば、正常にインストールされ、Pathも正しく設定されています。<a href="#vscode">次の作業</a>に移ってください。</p>
+      <p>もし、「'gcc'は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはバッチ ファイルとして認識されません」、というようなメッセージが表示された場合、正常にインストールできていません。
         よくある間違いのケースを、以下にまとめました。
       <ol>
         <li>「mingw64」フォルダがCドライブ直下に入っているか</li>
         <li>システム環境変数のPath設定は、正しく入力されているか、打ち間違えはないか。</li>
-        <li>間違えて「(ユーザ名)のユーザ環境変数」の方に、Pathを入力してしまっていないか。</li>
       </ol>
       <p>これらを確認し、間違っていれば、前の手順の該当箇所をもう一度よく確認してください。</p>        
 
@@ -235,7 +238,7 @@
       <p>→ <a href="https://code.visualstudio.com/" target="_blank">公式サイトからインストール</a></p>
       <p>画面通りに進めていけば問題なくインストールできると思いますが、もしやり方がわからない場合は、「VSCode インストール」などとweb検索して、インストール手順を紹介しているサイトを参照してください。</p>
 
-      <h2 id="vscode">Visual Studio Code の日本語化</h2>
+      <h2 id="vscode-ja">Visual Studio Code の日本語化</h2>
       <p>VSCodeは英語で全て書かれています。これは、皆さんには少し使いづらいと思います。</p>
       <p>VSCodeは、たくさんの言語に対応していて、日本語化する設定方法を書いておきます。必須ではないですが、やっておいた方が皆さん的に楽だと思います。</p>
       <p>1. VSCodeを起動</p>
@@ -247,6 +250,48 @@
         <img src="images/VS_1.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
         <p class="image-caption">図13. VS Codeの日本語化</p>
       </div>  
+
+      <h2 id="vscode-assist">Visual Studio Code のAI・Suggestion機能の無効化</h2>
+      <p>VSCodeには、AIによるコード補完や、入力中にプログラムの候補を表示するSuggestion機能があります。</p>
+      <p>本講義では、プログラムを自分で考えて入力する練習をするため、これらの補助機能をオフにしておきます。以下の手順に従って設定してください。</p>
+
+      <h3>AI機能をオフにする</h3>
+      <p>1. VSCodeの画面左下にある歯車マークをクリックし、「設定」を選択します。</p>
+      <div class="image-container">
+        <img src="images/vs_ai1.jpg" style="width: 500px;" alt="VS Codeの設定を開く画面">
+        <p class="image-caption">図14. VS Codeの設定画面を開く</p>
+      </div>
+
+      <p>2. 設定画面上部の検索ボックスに「disable ai」と入力します。「Chat: Disable AI Features」が表示されたら、左側のチェックボックスをクリックして、<strong>チェックを入れてください。</strong></p>
+      <div class="image-container">
+        <img src="images/vs_ai2.jpg" style="width: 1000px;" alt="Chat Disable AI Featuresの設定画面">
+        <p class="image-caption">図15. AI機能の無効化</p>
+      </div>
+
+      <h3>Suggestion機能をオフにする</h3>
+      <p>3. 続いて、設定画面上部の検索ボックスに「quick suggestion」と入力します。「Editor: Quick Suggestions」が表示されたら、「settings.json で編集」をクリックします。</p>
+      <div class="image-container">
+        <img src="images/vs_ai3.jpg" style="width: 1000px;" alt="Quick Suggestionsの設定画面">
+        <p class="image-caption">図16. Quick Suggestionsの設定</p>
+      </div>
+
+      <p>4. settings.jsonが開いたら、「editor.quickSuggestions」の中にある「other」、「comments」、「strings」の3項目を、すべて「off」に変更します。
+        (すでに"off"になっているものはそのままで大丈夫です。)
+      </p>
+      
+      <div class="image-container">
+        <img src="images/vs_ai4.jpg" style="width: 1000px;" alt="settings.jsonでQuick Suggestionsをoffにする画面">
+        <p class="image-caption">図17. Quick Suggestionsをすべてoffに設定</p>
+      </div>
+
+      <p>5. 設定が終わったらsettings.jsonを閉じます。保存するか確認する画面が表示された場合は、「保存」をクリックしてください。</p>
+      <div class="image-container">
+        <img src="images/vs_ai5.jpg" style="width: 600px;" alt="settings.jsonの保存確認画面">
+        <p class="image-caption">図18. settings.jsonの変更を保存</p>
+      </div>
+
+      <p>以上で、AIによるコード補完と、入力中に自動的に表示されるSuggestion機能の設定は完了です。</p>
+
       <p>最後に、正しくコードが実行できないといけないので、動作確認をしましょう。</p>
 
       <h2 id="first-program">動作確認</h2>
@@ -254,21 +299,21 @@
       <p>とはいっても初めてなので、いろいろ設定する必要があります。下を読みながら、進めていきましょう。</p>
       <h3>作業フォルダの作成</h3>
       <p>皆さんは、大学の授業のレポート課題のwordやpowerpointをどのように管理していますか？</p>
-      <p>全部ダウンロードファイルに入れたり、デスクトップに置きっぱなしにしてるズボラな人も中にはいると思います。。</p>
+      <p>全部ダウンロードファイルに入れたり、デスクトップに置きっぱなしにしてるズボラな人も中にはいると思います。</p>
       <p>プログラムで作成されるコードファイルはとても大量で、かつ頻繁に書き換えたり消去が行われます。なので、プログラミングの授業で作成したファイルを雑に管理すると、間違えてファイルを消してしまったり、
         見つからなくなってしまったりして、あとで大変なことになります。
       </p>
       <p>なので、今からまずはプログラミング用の作業フォルダを作成しましょう。</p>
 
-      <p>「ドキュメント」フォルダに作業用フォルダは作成しましょう。ドキュメントには、エクスプローラを開いて、左側のメニューにあります。</p>
+      <p>「ドキュメント」フォルダに作業用フォルダを作成しましょう。ドキュメントは、エクスプローラを開いて、左側のメニューにあります。</p>
       <p>「ドキュメント」フォルダ上で、左上の「新規作成」ボタンをクリックし、「フォルダ」を選択。フォルダ名は、「cpro」としましょう。</p>
       <div class="image-container">
         <img src="images/dousa_1.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
-        <p class="image-caption">図14. 作業フォルダ作成1</p>
+        <p class="image-caption">図19. 作業フォルダ作成1</p>
       </div>  
       <div class="image-container">
         <img src="images/dousa_2.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
-        <p class="image-caption">図15. 作業フォルダ作成2</p>
+        <p class="image-caption">図20. 作業フォルダ作成2</p>
       </div>  
 
       <p>プログラミングの講義で作成するソースファイル (コードのファイル)は、すべてここに保存するように常に心がけましょう。</p>
@@ -277,14 +322,24 @@
 
       <h3>動作確認</h3>
       <p>以下の手順で、まずは.cファイルを作成します。</p>
-      <ol>
-        <li>Visual Studio Codeを起動</li>
-        <li>上部メニューバーからファイル -> フォルダを開くを選択</li>
-        <li>エクスプローラ画面が開くので、ドキュメントフォルダ内に作成した「cpro」フォルダをクリックし、フォルダーの選択をクリック</li>
-        <li>画面が移り変わって、「このフォルダ内のファイルの作成者を信頼しますか？」という画面が出てきたら、「はい、作成者を信頼します」を選択 (出てこなかったらそのまま次へ)</li>
-        <li>左側の「エクスプローラ」から，作業フォルダを右クリックし，新しいファイルを選択</li>
-        <li>「test.c」という名前でファイルを作成</li>
-      </ol>
+      <p>1. Visual Studio Codeを起動</p>
+      <p>2. 上部メニューバーからファイル -> フォルダーを開くを選択</p>
+      <div class="image-container">
+        <img src="images/open1.jpg" style="width: 700px;" alt="VS Codeでファイルメニューからフォルダーを開く画面">
+        <p class="image-caption">図21. VS Codeでフォルダーを開く</p>
+      </div>
+      <p>3. 画面が開くので、ドキュメントフォルダ内に作成した「cpro」フォルダをクリックし、「フォルダーの選択」をクリック</p>
+      <div class="image-container">
+        <img src="images/open2.jpg" style="width: 1000px;" alt="VS Codeでcproフォルダを選択する画面">
+        <p class="image-caption">図22. cproフォルダの選択</p>
+      </div>
+      <p>4. 画面が移り変わって、「このフォルダ内のファイルの作成者を信頼しますか？」という画面が出てきたら、「はい、作成者を信頼します」を選択 (出てこなかったらそのまま次へ)</p>
+      <p>5. 左側の「エクスプローラー」で作業フォルダを右クリックし、「新しいファイル...」を選択</p>
+      <div class="image-container">
+        <img src="images/test1.jpg" style="width: 700px;" alt="VS Codeのエクスプローラーから新しいファイルを作成する画面">
+        <p class="image-caption">図23. 新しいファイルの作成</p>
+      </div>  
+      <p>6. 「test.c」という名前でファイルを作成</p>
       
       <p>test.cのファイルを作成したら，以下のプログラムを入力</p>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
@@ -294,11 +349,24 @@ int main(void){
 }
 </code></pre>
 
+    <div class="image-container">
+      <img src="images/test2.jpg" style="width: 1000px;" alt="test.cにプログラムを入力した画面">
+      <p class="image-caption">図24. test.cへのプログラム入力</p>
+    </div>  
+
     
     <p>プログラムの入力が終わったら、上部メニューバーからファイル -> 保存を選択し、保存してください。これをしないとプログラムが動きません。</p>
+    <div class="image-container">
+      <img src="images/test3.jpg" style="width: 700px;" alt="VS Codeでtest.cを保存する画面">
+      <p class="image-caption">図25. test.cの保存</p>
+    </div>  
     
     <h3>コンパイル</h3>
     <p>VS Codeのターミナルを使って、作成したプログラムをコンパイルします。上部メニューバーからターミナル -> 新しいターミナルを選択すると、VS Codeのターミナルが開きます。</p>
+    <div class="image-container">
+      <img src="images/terminal1.jpg" style="width: 1000px;" alt="VS Codeのターミナルの位置を示す画面">
+      <p class="image-caption">図26. VS Codeのターミナル</p>
+    </div>  
     <p>ターミナルが開いたら、以下のコマンドを入力してください。</p>
     <pre><code>gcc test.c -o test.exe -lm -ansi -pedantic -Wall</code></pre>
 
@@ -307,6 +375,10 @@ int main(void){
     <pre><code>.\test.exe</code></pre>
 
     <p>ターミナルにHello, World!と表示されれば、プログラムが正常に実行されています。</p>
+    <div class="image-container">
+      <img src="images/test4.jpg" style="width: 1000px;" alt="VS Codeのターミナルでプログラムをコンパイルして実行した画面">
+      <p class="image-caption">図27. コンパイルとプログラムの実行結果</p>
+    </div>  
 
     <p>環境構築のセットアップは以上となります。お疲れさまでした。</p>
 
@@ -319,9 +391,11 @@ int main(void){
         <li><a href="#env-title">環境構築</a></li>
         <li><a href="#toc">目次</a></li>
         <li><a href="#pre">準備知識</a></li>
-        <li><a href="#what">MinGW, Command Line Tools for Xcode とは？</a></li>
+        <li><a href="#what">MinGWとは？</a></li>
         <li><a href="#windows">コンパイラインストール</a></li>
         <li><a href="#vscode">Visual Studio Code のインストール</a></li>
+        <li><a href="#vscode-ja">Visual Studio Code の日本語化</a></li>
+        <li><a href="#vscode-assist">AI・Suggestion機能の無効化</a></li>
         <li><a href="#first-program">動作確認</a></li>
       </ul>
     </aside>
