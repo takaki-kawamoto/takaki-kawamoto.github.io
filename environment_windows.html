@@ -169,8 +169,9 @@
         <img src="images/mingw_2.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
         <p class="image-caption">図2. minGWのセットアップ画面</p>
       </div>      
-      <p>5. 遷移した先のページの、Assetsの中を見ます。いろいろとあって判別が大変ですが、よく読んで、「x86_64-16.2.0-release-posix-seh-ucrt-rt_v14-rev1.7z」という
-        ファイルをクリックし、ダウンロードします。
+      <p>5. 遷移した先のページの、Assetsの中を見ます。いろいろとあって判別が大変ですが、よく読んで、「<span style="color: red;">x86_64</span>-16.2.0-release-<span style="color: red;">posix</span>-seh-<span style="color: red;">ucrt</span>-rt_v14-rev1.7z」という
+        ファイルをクリックし、ダウンロードします。16.2.0というのはバージョンです。ここが異なっていても以後の流れは同じです。
+        <br>※他のファイルをダウンロードしても動かないので注意すること。
       </p>
       <div class="image-container">
         <img src="images/git_dl.jpg" style="width: 1000px;" alt="開発環境のスクリーンショット">
@@ -235,6 +236,7 @@
       <p>もし、「'gcc'は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはバッチ ファイルとして認識されません」、というようなメッセージが表示された場合、正常にインストールできていません。
         よくある間違いのケースを、以下にまとめました。
       <ol>
+        <li>「<span style="color: red;">x86_64</span>-16.2.0-release-<span style="color: red;">posix</span>-seh-<span style="color: red;">ucrt</span>-rt_v14-rev1.7z」とは違う名前のファイルをダウンロードしてしまっていないか</li>
         <li>「mingw64」フォルダがCドライブ直下に入っているか</li>
         <li>システム環境変数のPath設定は、正しく入力されているか、打ち間違えはないか。</li>
       </ol>
